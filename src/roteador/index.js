@@ -1,16 +1,18 @@
-import { createMemoryHistory, createRouter, RouteRecordRaw } from 'vue-router'
+import {createMemoryHistory, createRouter, createWebHistory} from 'vue-router'
 
-const  rotas: RouteRecordRaw[] =[
-    {
-        path: '/',
-        name: 'profile',
-        component: User
-    }
+import Tarefas from '../views/Tarefas.vue'
+import Projetos from '../views/Projetos.vue'
+
+
+const routes = [
+    { path: '/', component: Tarefas },
+    { path: '/projetos', component: Projetos }
 ]
 
-const roteador = createRouter({
-    history: createMemoryHistory(),
-    rotas,
+const router = createRouter({
+    history: createWebHistory(),
+    routes: routes,
 })
 
-export default roteador;
+
+export default router
