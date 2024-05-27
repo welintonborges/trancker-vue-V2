@@ -5,8 +5,15 @@ import Projetos from '../views/Projetos.vue'
 
 
 const routes = [
-    { path: '/', component: Tarefas },
-    { path: '/projetos', component: Projetos }
+    {   path: '/',
+        name: 'Tarefas',
+        component: Tarefas
+    },
+    {
+        path: '/projetos',
+        name: 'Projetos',
+        component: Projetos
+    }
 ]
 
 const router = createRouter({
