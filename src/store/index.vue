@@ -1,10 +1,14 @@
 <script lang="ts">
 import IProjetos from "@/interfaces/IProjeto.vue";
 import {createStore, Store, useStore as vuexUseStore} from "vuex";
-import {InjectionKey} from "vue";
+import {defineComponent, InjectionKey} from "vue";
 import IProjeto from "@/interfaces/IProjeto.vue";
 import {ALTERA_PROJETO, ADICIONA_PROJETO, EXCLUIR_PROJETO, NOTIFICAR} from "@/store/Tipo-Mutacoes";
 import {INotificacao} from "@/interfaces/INotificacao";
+
+export default defineComponent({
+  name: 'Index'
+})
 
 export const key: InjectionKey<Store<Estado>> = Symbol()
 
