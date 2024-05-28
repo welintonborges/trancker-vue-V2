@@ -51,3 +51,8 @@ export default defineComponent({
   }
 });
 </script>
+<style scoped>
+.button {
+  margin-left: 8px;
+}
+</style>

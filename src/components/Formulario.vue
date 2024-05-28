@@ -17,10 +17,12 @@
         <div class="select">
           <select v-model="idProjeto">
             <option value="">Selecione o projeto</option>
-            <option :value="projeto.id"
-                    v-for="projeto in projetos"
-                    :key="projeto.id">
-              {{projeto.nome}}
+            <option
+                :value="projeto.id"
+                v-for="projeto in projetos"
+                :key="projeto.id"
+            >
+              {{ projeto.nome }}
             </option>
           </select>
         </div>
@@ -47,15 +49,16 @@ export default defineComponent({
   data () {
     return {
       descricao: '',
-      idPojeto: ''
+      idProjeto: ''
     }
   },
   methods: {
     finalizarTarefa (tempoDecorrido: number) : void {
+      console.log("aqui ==> ", this.idPojeto)
       this.$emit('aoSalvarTarefa', {
         duracaoEmSegundos: tempoDecorrido,
         descricao: this.descricao,
-        projeto: this.projeto.find(proj => proj.id == this.idPojeto)
+        projeto: this.projetos.find(proj => proj.id == this.idProjeto)
       })
       this.descricao = ''
     }

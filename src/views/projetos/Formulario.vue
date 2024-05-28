@@ -4,6 +4,7 @@ import {useStore} from "@/store/index.vue";
 import {ADICIONA_PROJETO, ALTERA_PROJETO, NOTIFICAR} from "@/store/Tipo-Mutacoes";
 import {TipoNotificacao} from "@/interfaces/INotificacao";
 import {notificacaoMixin} from "@/minixs/Notificar";
+import useNotificador from '@/hooks/Notificador'
 
 export default defineComponent({
   name: 'Formulario',
@@ -41,10 +42,12 @@ export default defineComponent({
 
   },
   setup() {
-      const store = useStore()
+          const store = useStore()
+          const { notificar }  = useNotificador()
        return{
          store,
-         projetos: computed(()=> store.state.projetos)
+         notificar,
+         // projetos: computed(()=> store.state.projetos)
        }
   },
 })

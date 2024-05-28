@@ -4,11 +4,3 @@ export default interface IProjeto {
   nome: string;
 }
 </script>
-
-<template>
-
-</template>
-
-<style scoped>
-
-</style>
