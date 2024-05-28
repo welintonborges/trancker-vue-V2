@@ -1,25 +1,33 @@
 <script  lang="ts">
-import { defineComponent } from 'vue';
-import IProjetos from "@/interfaces/IProjetos.vue";
+import {computed, defineComponent} from 'vue';
+import { useStore } from "@/store/index.vue";
 
 export default defineComponent({
   name: 'Projetos',
   data() {
       return{
         nomeDoProjeto: "",
-        projetos: [] as IProjetos[]
+        // projetos: [] as IProjetos[]
       };
   },
   methods:{
     salvar(){
-      const projeto: IProjetos ={
-        nome: this.nomeDoProjeto,
-        id: new Date().toISOString(),
-      }
-      this.projetos.push(projeto);
+      this.store.commit('ADICIONA_PROJETO', this.nomeDoProjeto);
+      // const projeto: IProjetos ={
+      //   nome: this.nomeDoProjeto,
+      //   id: new Date().toISOString(),
+      // }
+      // this.projetos.push(projeto);
       this.nomeDoProjeto = "";
     }
-  }
+  },
+  setup() {
+      const store = useStore()
+    return{
+        store,
+      projetos: computed(()=> store.state.projetos)
+    }
+  },
 })
 </script>
 
