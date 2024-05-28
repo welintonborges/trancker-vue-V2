@@ -31,7 +31,6 @@ const routes = [
                 name: 'Editar projeto',
                 component: Formulario,
                 props: true
-
             }
         ]
     }

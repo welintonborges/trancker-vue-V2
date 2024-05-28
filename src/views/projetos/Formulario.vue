@@ -1,15 +1,18 @@
 <script  lang="ts">
 import {computed, defineComponent} from 'vue';
-import { useStore } from "@/store/index.vue";
-import {ADICIONA_PROJETO, ALTERA_PROJETO} from "@/store/Tipo-Mutacoes";
+import {useStore} from "@/store/index.vue";
+import {ADICIONA_PROJETO, ALTERA_PROJETO, NOTIFICAR} from "@/store/Tipo-Mutacoes";
+import {TipoNotificacao} from "@/interfaces/INotificacao";
+import {notificacaoMixin} from "@/minixs/Notificar";
 
 export default defineComponent({
-  name: 'Projetos',
+  name: 'Formulario',
   props: {
     id: {
       type: String
     }
   },
+  mixins:[notificacaoMixin],
   mounted () {
     if(this.id) {
       const projeto = this.store.state.projetos.find(proj => proj.id == this.id)
@@ -32,8 +35,10 @@ export default defineComponent({
         this.store.commit(ADICIONA_PROJETO, this.nomeDoProjeto);
       }
       this.nomeDoProjeto = "";
+      this.notificar(TipoNotificacao.SUCESSO, 'Excelente', 'Oprojeto foi cadastrado com sucesso')
       this.$router.push("/projetos");
-    }
+    },
+
   },
   setup() {
       const store = useStore()
